@@ -32,6 +32,7 @@ Edit the HTML, CSS, and JavaScript files to customize the website for your own n
 
 
 **License**
+This project is licensed under the MIT License - see the LICENSE file for details.
 This project has all the copyrights reserved including the domain name.
 
 
