@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Mathur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            
+
+        }
+
+        body {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)), url(images/BG1.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: "Ubuntu", sans-serif;
+        }
+
+        /* nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 98px;
+            background-color: #3d5a80;
+
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 23px;
+
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+
+        }
+
+        nav ul li a:hover {
+            color: #ee6c4d;
+            font-size: 1.3rem;
+            transition: 1s;
+
+
+        }
+
+        .left {
+            font-size: 1.9rem;
+            font-style: italic;
+            font-weight: bolder;
+        }
+
+        .right {
+            font-size: 1.1rem;
+            font-style: italic;
+            letter-spacing: 0.05cap;
+        }*/
+
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            width: 100%;
+            padding: 1.3rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(50px);
+            z-index: -1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #6ec3f4d6, #e2e2e2, transparent);
+            transition: 0.5s ease;
+
+        }
+
+        .header:hover::after {
+            left: 100%;
+        }
+
+        .logo img {
+            height: auto;
+            width: auto;
+            max-height: 52px;
+            max-width: 230px;
+        }
+
+        .navbar {
+            margin-right: 17.5rem;
+        }
+
+
+        .navbar a {
+            font-size: 1.15rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 2.5rem;
+
+
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .icons {
+            position: absolute;
+            right: 15%;
+            font-size: 2.8rem;
+            color: #ffffff;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width:992px) {
+            .header {
+                padding: 1.3rem 5%;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .icons {
+                display: inline-flex;
+            }
+
+            #check:checked~.icons #menu-icon {
+                display: none;
+            }
+
+            .icons #close-icon {
+                display: none;
+            }
+
+            #check:checked~.icons #close-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 99%;
+                left: 0;
+                width: 100%;
+                height: 0;
+                background: rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(50px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                transition: 0.3s ease-in;
+            }
+
+            #check:checked~.navbar {
+                height: 12.7rem;
+            }
+
+            .navbar a {
+                display: block;
+                font-size: 1.1rem;
+                margin: 2rem 0;
+                text-align: center;
+                transform: translateY(-50px);
+                transition: 0.3 ease-in;
+            }
+
+            #check:checked~.navbar a {
+                transform: translateY(0);
+                opacity: 1;
+                transition-delay: calc(.15s * var(--i));
+            }
+        }
+
+
+
+        .firstsection {
+            display: flex;
+            justify-content: space-around;
+            margin: 140px 0;
+
+        }
+
+        .firstsection>div {
+            width: 30%;
+
+        }
+
+        .firstsection>div.leftsection {
+            width: 40%;
+
+
+        }
+
+        .leftsection {
+            color: rgb(255, 255, 255);
+            margin: 170px 0;
+            font-size: 3rem;
+        }
+
+
+
+        #btn {
+            padding: 12px;
+            background: #3d5a80;
+            color: white;
+            border-radius: 30px;
+
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 186px;
+            margin-left: 0px;
+            text-decoration: none;
+
+        }
+
+        .leftsection a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+        /* .rightsection img {
+            scale: 140%;
+            width: 90%;
+            margin: 130px 0;
+        }*/
+
+        .purple {
+            color: #ee6c4d;
+        }
+
+        .text-grey {
+            color: #ee6c4d;
+        }
+
+        #element {
+            color: #ee6c4d;
+        }
+
+        .secondsection {
+            max-width: 80vw;
+            margin: auto;
+            height: 80vh;
+            overflow-x: scroll;
+            scrollbar-width: none;
+        }
+
+        main hr {
+            background: #ee6c4d;
+            height: 1.5px;
+            border: 0;
+            margin: 40px 84px;
+
+        }
+
+        .secondsection h1 {
+            font-size: 1.9rem;
+            color: rgb(255, 255, 255);
+            padding-bottom: 50px;
+        }
+
+        .secondsection .box {
+            background: #ffffff;
+
+            height: 3px;
+            margin: 60px;
+
+            display: inline-flex;
+
+
+
+        }
+
+        .secondsection .vertical {
+            width: 1.5px;
+            height: 80px;
+            background: #ffffff;
+            margin: 0 135px;
+
+
+
+        }
+
+        .image-top {
+            scale: 500%;
+            width: 23px;
+            position: relative;
+            top: 120px;
+            left: -12px
+        }
+
+        .vertical-text {
+            color: rgb(255, 255, 255);
+            position: relative;
+            top: 175px;
+            width: 165px;
+            left: -75px;
+            font-weight: 900;
+
+
+        }
+
+        .vertical-desc {
+            color: rgb(255, 255, 255);
+            position: relative;
+            top: 15%;
+            width: 190px;
+            left: 10px;
+            font-weight: 400;
+            align-content: center;
+
+        }
+
+        .footer {
+            display: flex;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(50px);
+            padding: 1.3rem;
+            justify-content: center;
+            height: 0%;
+            margin-top: 200px;
+            bottom: 0%;
+
+        }
+
+        .footer>div {
+            width: 323px;
+
+        }
+
+        .footer .footer-first {
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+
+        }
+
+        footer .text-center {
+            color: rgba(255, 255, 255, 0.311);
+            text-align: center;
+            font-size: smaller;
+            align-items: center;
+        }
+
+        #typed{
+            width: 1.5rem;
+            height: 2.5rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <header class="header">
+        <a href="index.html" class="logo"><img src="images/logobg.png" alt=""></a>
+
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+
+        </label>
+        <nav class="navbar">
+            <a href="projects.html" style="--i:0">Projects</a>
+            <a href="About Me.html" style="--i:1">About Me</a>
+            <a href="Contact Me.html" style="--i:2">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="firstsection">
+            <div class="leftsection">
+                Hi! Myself <span class="purple">Sahil Mathur</span>
+                <div>I am a passionate </div>
+                <div id="typed"> <span id="element"></span></div>
+                <div class="buttons">
+
+                    <button id="btn"><a href="documents/Sahil Mathur Resume .pdf">Resume</a></button>
+
+                </div>
+            </div>
+            <div class="rightsection">
+                <img src="/" alt="">
+            </div>
+
+
+
+        </section>
+        <hr>
+        <section class="secondsection">
+            <span class="text-grey">What I have done so far..!</span>
+            <h1>My Experiences</h1>
+            <div class="box">
+                <div class="vertical">
+                    <img class="image-top" src="images/logo1.png" alt="">
+                    <div class="vertical-text">
+                        Scientific Researcher (Jun 2022 - Nov 2022)
+                        <div class="vertical-desc"> ORBITIX INDIA AEROSPACE(p) LTD - Internship <div><span><i>-Worked on
+                                        the propulsion system of Atalyan</i></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical">
+                    <img class="image-top" src="images/logo4.png" alt="">
+                    <div class="vertical-text">
+                        Propulsional Intern (Sep 2022 - Dec 2022)
+                        <div class="vertical-desc">Dream Aerospace - Internship <div><span><i>-Worked on the CFD aspect
+                                        of fuel Injectors</i></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical">
+                    <img class="image-top" src="images/logo3.png" alt="">
+                    <div class="vertical-text">
+                        Design Intern (Jul 2023 - Aug 2023)
+                        <div class="vertical-desc"> Brahmastra Aerospace & Defence Pvt. LTD - Internship <div>
+                                <span><i>-Worked on the coupled analysis of CD nozzle</i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical">
+                    <img class="image-top" src="images/logo2.png" alt="">
+                    <div class="vertical-text">
+                        Student Affiliate (Jan 2024 - Mar 2024)
+                        <div class="vertical-desc"> Royal Aeronautical Society - Part-time</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h2>Sahil's Portfolio</h2>
+                <div class="text-center">
+                    Copyright&#169; www.sahilsportfolio.com | All Rights Reserved
+                </div>
+            </div>
+
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" ></script>
+    <script >
+        var typed = new Typed('#element', {
+            strings: ['<i>Aerospace Engineer.</i>', '&amp; <i> Propulsion Engineer. </i>'],
+            typeSpeed: 50,
+            loop: true
+        });
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Mathur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)), url(images/BG1.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: "Ubuntu", sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            width: 100%;
+            padding: 1.3rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(50px);
+            z-index: -1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #6ec3f4d6, #e2e2e2, transparent);
+            transition: 0.5s ease;
+
+        }
+
+        .header:hover::after {
+            left: 100%;
+        }
+
+        .logo img {
+            height: auto;
+            width: auto;
+            max-height: 52px;
+            max-width: 230px;
+        }
+
+        .navbar {
+            margin-right: 17.5rem;
+        }
+
+
+        .navbar a {
+            font-size: 1.15rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 2.5rem;
+
+
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .icons {
+            position: absolute;
+            right: 0;
+            padding-right: 8rem;
+            font-size: 2.8rem;
+            color: #ffffff;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width:992px) {
+            .header {
+                padding: 1.3rem 5%;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .icons {
+                display: inline-flex;
+            }
+
+            #check:checked~.icons #menu-icon {
+                display: none;
+            }
+
+            .icons #close-icon {
+                display: none;
+            }
+
+            #check:checked~.icons #close-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+
+                top: 99%;
+                left: 0;
+                width: 100%;
+                height: 0;
+                background: rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(50px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                transition: 0.3s ease-in;
+            }
+
+            #check:checked~.navbar {
+                height: 12.7rem;
+            }
+
+            .navbar a {
+                display: block;
+                font-size: 1.1rem;
+                margin: 2rem 0;
+                text-align: center;
+                transform: translateY(-50px);
+                transition: 0.3 ease-in;
+            }
+
+            #check:checked~.navbar a {
+                transform: translateY(0);
+                opacity: 1;
+                transition-delay: calc(.15s * var(--i));
+            }
+        }
+
+        .about_container {
+            width: 80%;
+            padding: 190px 8%;
+        }
+
+        .about_contents {
+            color: #3d5a80;
+            display: grid;
+            grid-template-columns: 2fr 5fr;
+            grid-gap: 70px;
+
+        }
+
+        .infosection {
+            margin-left: 200px;
+            font-size: 110%;
+        }
+
+        #h1 {
+            font-size: 320%;
+            padding-bottom: 10%;
+            color: #ee6c4d;
+
+        }
+
+        #p1 {
+            font-size: medium;
+            color: white;
+        }
+
+
+        #imagesection {
+            background-image:
+                linear-gradient(180deg, #00000000 90%, #000000),
+                url('images/background.jpg');
+                backdrop-filter: blur(10px);
+            position: relative;
+            max-height: 368px;
+            max-width: 302px;
+            height: auto;
+            width: auto;
+            z-index: 1;
+        }
+        #img1 {
+            margin-left: -9px;
+            position: relative;
+            max-width: 302px;
+            width: auto;
+            max-height: 500px;
+            height: auto;
+            z-index: -1;
+            
+
+        }
+        
+
+        
+
+        
+        
+        .footer {
+            display: flex;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(50px);
+            padding: 1.3rem ;
+            justify-content: center;
+            height: 0%;
+            margin-top: 200px;
+            bottom: 0%;
+
+        }
+
+        .footer>div {
+            width: 323px;
+
+        }
+
+        .footer .footer-first {
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+            
+        }
+
+        footer .text-center {
+            color: rgba(255, 255, 255, 0.311);
+            text-align: center;
+            font-size: smaller;
+            align-items: center;
+        }
+
+        #btn{
+            padding: 12px;
+            background: #3d5a80;
+            color: white;
+            border-radius: 30px;
+            
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 22px;
+            margin-left: 0px;
+            text-decoration: none;
+            
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        @media(max-width: 1200px) {
+            .about_contents{
+                display: contents;
+            }
+            
+            .infosection {
+              margin-top: 97px;
+              margin-left: 20px;
+              font-size: 110%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo"><img src="images/logobg.png" alt=""></a>
+
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+
+        </label>
+        <nav class="navbar">
+            <a href="projects.html" style="--i:0">Projects</a>
+            <a href="About Me.html" style="--i:1">About Me</a>
+            <a href="Contact Me.html" style="--i:2">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about_container">
+            <div class="about_contents">
+                <section id="imagesection">
+                    <img id="img1" src="images/sahilbhaiya-removebg1.png" alt="">
+                </section>
+
+                <section class="infosection">
+                    <h1 id="h1"><i>About Me</i></h1>
+                    <p id="p1"> I am a highly motivated and enthusiastic recent graduate with a Bachelor of Science
+                        degree in
+                        Aerospace Engineering, eager to contribute my knowledge and skills to the advancement of the
+                        aerospace industry. I possess a strong foundation in core engineering principles, with a
+                        particular
+                        interest in Designing and Analysis of different parts of a Rockets and Aircraft.
+                    </p>
+                    <p id="p1">
+                        Driven by a passion for space exploration and different launch vehicles and their designs as
+                        well as
+                        different types of military and commercial aircrafts including Boeing, Airbus, and launch
+                        vehicles such
+                        as Falcon and GSLV MKIII. I am committed to continuous learning and staying at the forefront of
+                        technological advancements. During my academic journey, I actively participated in different
+                        projects
+                        like Coupled analysis of CD Nozzle and finding the it’s deformation when the high pressure is
+                        applied
+                        to it from inside, CFD analysis of Re-entry Space Craft at Mach 25 and finding its temperate,
+                        pressure
+                        and velocity in the atmosphere, and Satellite tracking system with the help of Arduino UNO and
+                        ESP
+                        32, gaining valuable experience in Designing in Catia V5 and SolidWorks as well as Analysis in
+                        Ansys
+                        Fluent and Mechanical in which I have done CFD and FEA analysis. Along with designing and
+                        analysis,
+                        I also have interest in circuits and systems.
+
+
+                    </p>
+                    <p id="p1">
+                        I am a team player with excellent communication and collaboration skills, and I am confident in
+                        my
+                        ability to adapt to challenging environments and contribute effectively to diverse projects. I
+                        am eager
+                        to learn from experienced professionals and contribute meaningfully to the success of your
+                        organization.
+
+                    </p>
+
+                    <div class="buttons">
+                        <button id="btn"><a href="documents/Sahil Mathur Resume .pdf" >Resume</a></button>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h2>Sahil's Portfolio</h2>
+                <div class="text-center">
+                    Copyright&#169; www.sahilsportfolio.com | All Rights Reserved
+                </div>
+            </div>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Mathur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)), url(images/BG1.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: "Ubuntu", sans-serif;
+
+
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            width: 100%;
+            padding: 1.3rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(50px);
+            z-index: -1;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #6ec3f4d6, #e2e2e2, transparent);
+            transition: 0.5s ease;
+
+        }
+
+        .header:hover::after {
+            left: 100%;
+        }
+
+        .logo img {
+            height: auto;
+            width: auto;
+            max-height: 52px;
+            max-width: 230px;
+        }
+
+        .navbar {
+            margin-right: -0.5rem;
+        }
+
+
+        .navbar a {
+            font-size: 1.15rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 2.5rem;
+
+
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .icons {
+            position: absolute;
+            right: 10%;
+            font-size: 2.8rem;
+            color: #ffffff;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width:992px) {
+            .header {
+                padding: 1.3rem 5%;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .icons {
+                display: inline-flex;
+            }
+
+            #check:checked~.icons #menu-icon {
+                display: none;
+            }
+
+            .icons #close-icon {
+                display: none;
+            }
+
+            #check:checked~.icons #close-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 99%;
+                left: 0;
+                width: 100%;
+                height: 0;
+                background: rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(50px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                transition: 0.3s ease-in;
+            }
+
+            #check:checked~.navbar {
+                height: 12.7rem;
+            }
+
+            .navbar a {
+                display: block;
+                font-size: 1.1rem;
+                margin: 2rem 0;
+                text-align: center;
+                transform: translateY(-50px);
+                transition: 0.3 ease-in;
+            }
+
+            #check:checked~.navbar a {
+                transform: translateY(0);
+                opacity: 1;
+                transition-delay: calc(.15s * var(--i));
+            }
+        }
+
+        .footer {
+            display: flex;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(50px);
+            padding: 1.3rem;
+            justify-content: center;
+            height: 0%;
+            margin-top: 200px;
+            bottom: 0%;
+
+        }
+
+        .footer>div {
+            width: 323px;
+
+        }
+
+        .footer .footer-first {
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+
+        }
+
+        footer .text-center {
+            color: rgba(255, 255, 255, 0.311);
+            text-align: center;
+            font-size: smaller;
+            align-items: center;
+        }
+
+        .contact-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .contact-left {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+        }
+
+        .contact-left-title {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 5px;
+
+        }
+
+        .contact-left-title hr {
+            border: none;
+            width: 120px;
+            height: 5px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+
+        }
+
+        .contact-inputs {
+            width: 400px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 25px;
+            font-weight: 500;
+            color: #3d5a80;
+            border-radius: 50px;
+        }
+
+        .contact-left textarea {
+            height: 140px;
+            padding-top: 15px;
+            border-radius: 20;
+        }
+
+        .contact-inputs:focus {
+            border: 2px solid #3d5a80;
+        }
+
+        .contact-inputs::placeholder {
+            color: #3d5a80;
+        }
+
+        .contact-left button {
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            gap: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(270deg, #ee6c4d, #ee6c4d);
+            cursor: pointer;
+
+
+        }
+
+        .contact-left button img {
+            height: 15px;
+        }
+
+        .container-right img {
+            width: 100px;
+        }
+
+        @media (max-width:800px) {
+            .contact-inputs {
+                width: 80vw;
+            }
+
+            .contact-right {
+                display: none;
+            }
+
+
+        }
+
+        #hr1 {
+            border: none;
+            max-width: 1300px;
+            height: 5px;
+            background-color: #ee6c4d;
+            border-radius: 10px;
+            margin: 40px 94px;
+
+        }
+
+        #img1 {
+            width: 450px;
+        }
+
+        #wrapper {
+            width: 100%;
+            padding: 1.3rem 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #button {
+
+            display: inline-block;
+            height: 60px;
+            width: 60px;
+
+            margin: 0 5px;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.368);
+            transition: all 0.3s ease-out;
+
+
+
+        }
+
+        #button:hover {
+            width: 200px;
+
+        }
+
+        #icon {
+            color: black;
+            display: inline-block;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            border-radius: 50px;
+            box-sizing: border-box;
+            line-height: 60px;
+            transition: all 0.3s ease-out;
+        }
+
+        #button:nth-child(1) #icon:hover {
+            background: #4267b2;
+        }
+
+        #button:nth-child(2) #icon:hover {
+            background: #e1306c;
+        }
+
+        #button:nth-child(3) #icon:hover {
+            background: #0077b5;
+        }
+
+        #icon {
+            font-size: 25px;
+            line-height: 60px;
+            transition: all 0.3s ease-out;
+        }
+
+        #button:nth-child(1) {
+            span {
+                color: #4267b2
+            }
+        }
+
+        #button:nth-child(2) {
+            span {
+                color: #e1306c
+            }
+        }
+
+        #button:nth-child(3) {
+            span {
+                color: #0077b5
+            }
+        }
+
+        #h3 {
+            padding: 0rem;
+            margin-bottom: 20px;
+            margin-left: 7rem;
+            color: #ffffff;
+        }
+
+
+        @media (max-width:500px) {
+
+            #button {
+                display: grid;
+                list-style: none;
+                margin-top: 7px;
+
+            }
+
+            #sp {
+                position: relative;
+                top: -38px;
+                left: 82px;
+            }
+
+
+
+            #button:nth-child(1) {
+                span {
+                    color: #4267b2
+                }
+            }
+
+            #button:nth-child(2) {
+                span {
+                    color: #e1306c
+                }
+            }
+
+            #button:nth-child(3) {
+                span {
+                    color: #0077b5
+                }
+            }
+
+            #wrapper {
+                display: list-item;
+                list-style: none;
+                padding-left: 5rem;
+                margin: 40px;
+
+
+            }
+
+            .container-right img {
+                display: none;
+                width: 0%;
+            }
+
+            .contact-right {
+                display: none;
+            }
+
+            #h3 {
+                margin-left: 4rem;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo"><img src="images/logobg.png" alt=""></a>
+
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <i class='bx bx-x' id="close-icon"></i>
+
+        </label>
+        <nav class="navbar">
+            <a href="projects.html" style="--i:0">Projects</a>
+            <a href="About Me.html" style="--i:1">About Me</a>
+            <a href="Contact Me.html" style="--i:2">Contact</a>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <div class="contact-left-title">
+                <h2>Get in touch</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="44cf6482-a680-4378-b785-318d9459c031">
+            <input type="text" name="Name" placeholder="Your Name" class="contact-inputs" required>
+            <input type="email" name="email" placeholder="Your Email" class="contact-inputs" required>
+            <textarea name="message" placeholder="Your Message" class="contact-inputs" required></textarea>
+            <button type="submit"><b><I>Submit</I></b> <img src="images/arrow_icon.png" alt=""></button>
+        </form>
+        <div class="contact-right">
+            <img src="images/right_img.png" id="img1" alt="">
+        </div>
+    </div>
+
+    <div>
+        <h3 id="h3"><i>Email: sahilmathur2432@gmail.com</i></h3>
+    </div>
+    <hr id="hr1">
+
+    <div id="wrapper">
+        <div id="button">
+            <div id="icon">
+                <a href="https://www.facebook.com/sahil.mathur.1460?sfnsn=wiwspwa&mibextid=RUbZ1f" target="_blank"> <i
+                        class="fab fa-facebook"></i> </a>
+            </div>
+            <span id="sp">Facebook</span>
+        </div>
+
+        <div id="button">
+            <div id="icon">
+                <a href="https://www.instagram.com/empirical_sam?igsh=bnkyeGV1Z3FwajI5" target="_blank"> <i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <span id="sp">Instagram</span>
+        </div>
+
+        <div id="button">
+            <div id="icon">
+                <a href="https://www.linkedin.com/in/sahil-mathur-2s4a3m2/" target="_blank"> <i
+                        class="fab fa-linkedin"></i></a>
+            </div>
+            <span id="sp">LinkedIn</span>
+        </div>
+    </div>
+
+    </header>
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h2>Sahil's Portfolio</h2>
+                <div class="text-center">
+                    Copyright&#169; www.sahilsportfolio.com | All Rights Reserved
+                </div>
+            </div>
+
+    </footer>
+</body>
+
+</html>
