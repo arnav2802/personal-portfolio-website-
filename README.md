@@ -8,20 +8,20 @@ This project was built for a client, so all rights are reserved including domain
 
 
 **Features**
-Responsive design
-Dynamic Projects page
-Contact-me page connecting directly to personal gmail 
-Dynamic Navigation menu
-Welcome message
-Downloadable resume and documents
-Experiences section
-Footer with copyright notice
+Responsive design,
+Dynamic Projects page,
+Contact-me page connecting directly to personal gmail,
+Dynamic Navigation menu,
+Welcome message,
+Downloadable resume and documents,
+Experiences section,
+Footer with copyright notice.
 
 **Technologies Used**
-HTML
-CSS
-JavaScript
-Typed.js library
+HTML,
+CSS,
+JavaScript,
+Typed.js library.
 
 **Setup**
 To use this code for your own portfolio website, follow these steps:
